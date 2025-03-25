@@ -1,4 +1,5 @@
 ﻿using ApiPokemonListas.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Runtime.ConstrainedExecution;
 
@@ -8,6 +9,7 @@ namespace ApiPokemonListas.Controllers
     //dotnet dev-certs https --trust
 
     [ApiController]
+    [Authorize] // 👈 Protege todos los endpoints
     [Route("api/pokemons")]
     public class PokemonController : ControllerBase
     {
