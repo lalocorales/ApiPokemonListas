@@ -1,4 +1,5 @@
 ﻿using ApiPokemonListas.Models;
+using Asp.Versioning;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Runtime.ConstrainedExecution;
@@ -9,8 +10,9 @@ namespace ApiPokemonListas.Controllers
     //dotnet dev-certs https --trust
 
     [ApiController]
-    [Authorize] // 👈 Protege todos los endpoints
-    [Route("api/pokemons")]
+    [Authorize(Roles = "Admin")]
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiVersion}/pokemons")]
     public class PokemonController : ControllerBase
     {
         private static List<Pokemon> pokemons = new List<Pokemon>
